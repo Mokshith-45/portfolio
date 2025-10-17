@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+/* Utility Classes (like @utility in the video) */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.flex-row { flex-direction: row; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-4 { gap: 1rem; }
+.gap-8 { gap: 2rem; }
+.w-full { width: 100%; }
+.h-screen { height: 100vh; }
+.p-4 { padding: 1rem; }
+.p-6 { padding: 1.5rem; }
+.p-8 { padding: 2rem; }
+.rounded-xl { border-radius: 1rem; }
+.bg-dark { background-color: #0f0f0f; }
+.bg-gray { background-color: #1f1f1f; }
+.text-white { color: #fff; }
+.text-green { color: #00ff99; }
+.text-gray { color: #aaa; }
+.font-bold { font-weight: 700; }
+.font-semibold { font-weight: 600; }
+.text-center { text-align: center; }
+.text-xl { font-size: 1.25rem; }
+.text-2xl { font-size: 1.5rem; }
+.text-4xl { font-size: 2.25rem; }
+.text-5xl { font-size: 3rem; }
+.hover-scale:hover { transform: scale(1.05); transition: transform 0.3s ease; }
+.shadow-lg { box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+
+/* Scroll Animations */
+.fade-in { opacity: 0; transform: translateY(50px); transition: all 1s ease-out; }
+.fade-in.show { opacity: 1; transform: translateY(0); }
+
+/* Buttons */
+.btn { padding: 0.75rem 1.5rem; border-radius: 0.75rem; font-weight: 600; cursor: pointer; }
+.btn-green { background-color: #00ff99; color: #0f0f0f; }
+.btn-green:hover { background-color: #00cc7a; }
+
+/* Section spacing */
+.section { padding: 8rem 2rem; }
+
