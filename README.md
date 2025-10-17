@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Mokshith — Portfolio
 
 A modern personal portfolio built with React and Vite. The project focuses on smooth animations (GSAP), simple component composition, and utility-first styling with Tailwind CSS.
@@ -6,6 +7,25 @@ This README covers how to run the project locally, what the code structure is, a
 
 Table of contents
 - Project snapshot
+# Mokshith — Portfolio
+
+A modern personal portfolio built with React and Vite. The project focuses on smooth animations (GSAP), simple component composition, and utility-first styling with Tailwind CSS.
+
+This README covers how to run the project locally, what the code structure is, and the important implementation details you might want to know when developing or deploying the site.
+
+Table of contents
+- Project snapshot
+- Tech stack
+- Local setup
+- Available scripts
+- Project structure
+- Styling and build notes (Tailwind + PostCSS)
+- Deployment notes
+- Contributing and license
+
+Project snapshot
+- Single-page portfolio site implemented with React (functional components + hooks).
+- Smooth entrance/scroll animations implemented using GSAP and ScrollTrigger.
 # Mokshith — Portfolio
 
 A modern personal portfolio built with React and Vite. The project focuses on smooth animations (GSAP), simple component composition, and utility-first styling with Tailwind CSS.
@@ -62,11 +82,18 @@ Project structure (key files/folders)
 - `src/App.jsx` — top-level App component
 - `src/components/` — React components (Hero, Navbar, Projects, About, Contact, Footer)
 - `src/assets/` — images and static assets
+- `tailwind.config.cjs` — Tailwind content paths and customization
+- `postcss.config.cjs` — PostCSS configuration (tailwindcss + autoprefixer)
 - `vite.config.js` — Vite configuration (React plugin)
 
 Styling & Tailwind notes
-- Tailwind is included using CDN Link
+- Tailwind is included using PostCSS. The main CSS file (`src/index.css`) contains these directives at the top:
 
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
 
 - Tailwind classes are used throughout components (e.g., `flex`, `text-4xl`, `space-x-6`). If you modify component file extensions or locations, update `tailwind.config.cjs` `content` paths so Tailwind can purge unused styles on build.
 
