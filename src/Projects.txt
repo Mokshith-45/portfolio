@@ -1,0 +1,182 @@
+Project name
+Demo Website
+
+Short tagline
+Clean, responsive Next.js prototype showcasing modern UI, authentication flows, and contact features.
+
+Purpose
+A hands-on exploration of Next.js (App Router) and Bootstrap to build a small, production-like demo site demonstrating page routing, forms, and responsive layouts.
+
+Key features
+Hero landing section with feature highlights.
+About page with professional profile and skills.
+Contact page with information cards, contact form, and embedded Google Map.
+Authentication flows: Login and Signup UI (toggle-style auth page).
+Signup and Login routes with Bootstrap-styled forms (converted to plain HTML inputs for compatibility).
+Reusable footer component and global layout using the Next.js App Router (layout.js).
+Responsive design using Bootstrap utility classes and custom CSS modules.
+
+Tech stack
+Next.js 15 (App Router) with Turbopack
+React 19
+Bootstrap 5 + Bootstrap Icons
+react-bootstrap (used selectively; some components replaced with plain HTML for compatibility)
+Node.js / npm
+
+Further improvements (optional)
+Replace plain HTML forms with fully validated React-controlled forms (use react-hook-form or Formik) and server-side handlers (API routes) for submission.
+Add authentication backend (NextAuth.js, custom JWT, or OAuth providers).
+Add unit/integration tests (Jest + React Testing Library) and E2E tests (Playwright).
+Improve accessibility (ARIA roles, keyboard navigation, label associations).
+Optimize images and assets; add lazy loading and responsive images.
+Deploy to Vercel, Netlify, or a container platform with CI/CD and preview deployments.
+Migrate fully to compatible react-bootstrap version or use headless UI for future React 19 compatibility.
+
+Assistant tools used
+Code edits and file updates were applied directly in the repo (file edits in src/app/*).
+Local dependency and build commands run in the terminal to verify setup (npm install, npm run dev).
+AI assistant recommended and implemented fixes (Next.js App Router layout, swapping react-bootstrap Form components for plain HTML inputs, and converting About/Login pages away from problematic react-bootstrap components).
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Project name
+Xero — The Xerox Finder
+
+Short tagline (1–2 lines)
+A React + Vite web app that finds nearby Xerox/printing shops, enables document upload and ordering, and offers delivery tracking with interactive map routing.
+
+Purpose
+Built as a college project for the TISD (Technologies and Innovations for Sustainable Development) course to simplify document printing and delivery for students and professionals.
+
+Key features
+Interactive map view showing user location and nearby Xerox/printing shops (Leaflet + OpenStreetMap).
+Search and autocomplete for places (LocationIQ autocomplete + search).
+"Search near me" powered by Overpass API (OpenStreetMap) to find stationery/printing-related shops within radius.
+Routing and directions from user to shop (Leaflet Routing Machine + OSRM).
+File upload and order placement UI with copies selection and a simple delivery status/animation.
+Responsive UI with Bootstrap and AOS animations for polished UX.
+Basic account/profile and dashboard flows for login, account settings, and order history navigation.
+Clear, modular React component structure and client-side routing (React Router).
+Uses open data & free mapping services to minimize dependencies on paid APIs.
+
+Tech stack used
+Frontend: React (v19) + Vite
+Routing/UI: react-router-dom, Bootstrap, AOS (Animate On Scroll)
+Maps & geolocation: leaflet, react-leaflet, leaflet-routing-machine, OpenStreetMap tiles
+Geocoding / autocomplete / search: LocationIQ (autocomplete & search) and Overpass API (nearby)
+Optional integrations shown: @react-google-maps/api (dependency present), Supabase client (dependency present for future backend)
+Build & tooling: Vite, ESLint
+Languages: JavaScript (React JSX), HTML, CSS
+
+Further improvements (optional / next steps)
+Add a secure backend (e.g., Supabase/Postgres or Node.js + Express) to store users, orders, shop partners and real-time order tracking.
+Implement authentication (OAuth / email) and role-based dashboard for shops and riders.
+Move API keys and sensitive config to environment variables; implement server-side proxies to protect keys.
+Add unit/integration tests and CI pipeline (Jest + React Testing Library + GitHub Actions).
+Improve accessibility (a11y) and progressive web app (PWA) support for offline caching.
+Add payment integration (Stripe/PayPal) and order receipts.
+Optimize map performance and clustering for dense areas; add caching for geocoding results.
+Localize UI and add analytics for user behavior.
+Assistant / tools I used
+
+
+AI-assisted development: used code-aware assistance to inspect project files and making of this project .
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Project: KaamSetu
+
+Short tagline
+AI-assisted staff scheduling and shift management for small businesses.
+Purpose / Problem statement (hackathon context)
+
+Built as a college-level hackathon project to solve the common pain of manual staff scheduling and communication for small shops. The team focused on automating shift creation, improving real-time updates, and providing owner/staff workflows to reduce administrative overhead and shift conflicts.
+
+Key features
+Authentication and user profiles: Email/password sign-up & login, profile creation stored in Supabase (owner vs staff roles).
+Role-based routing and dashboards: Separate owner and staff dashboards with role-appropriate views (owner can manage staff, view logs, change settings; staff has their own dashboard).
+Smart scheduling UI: AI-ready placeholders and an “AI Shift Planner” section for generating schedule drafts (UI and interactions prepared for integration with AI).
+Real-time data & logs: Attendance logs and scheduling updates fetched from Supabase; periodic polling to keep data fresh.
+Rich interactive landing/auth page: Animated hero with video, animated bubbles, Lottie/iframe-based feature cards, and a typed headline effect; modal login/signup flow.
+Profile & settings: Edit full name, password change flow, and logout using Supabase auth functions.
+Developer conveniences: Vite-powered React setup with quick HMR, Tailwind CSS utilities integrated (optionally replaced by plain CSS), PostCSS pipeline, and optional Bootstrap imports in dashboard pages.
+Visual polish: GSAP and Framer Motion used for micro-interactions and entrance animations; layout uses utility classes and custom CSS.
+
+Tech stack
+Frontend: React (Vite), React Router for routing, Framer Motion & GSAP for animations, optional React-Bootstrap/Bootstrap for components.
+Styling: Tailwind CSS (with PostCSS) and custom CSS fallbacks for global styles and components.
+Backend / Database: Supabase (auth + Postgres) for user management, profiles, staff roles, and attendance logs.
+Media & animations: Lottie (iframe/embed and @lottiefiles/lottie-player), embedded videos & assets.
+Build tools: Vite for dev server & build, npm for package management.
+Optional libs observed: react-icons for icons, react-archer (attempted), react-archer for relationship diagrams.
+
+Further improvements & AI / Assistant tools
+AI-driven scheduling engine: Integrate an LLM/AI service to generate optimal shifts from staff availability, predicted demand, and labor rules. Use fine-tuning or prompt engineering for local business constraints.
+Real-time sync: Replace polling with real-time channels (Supabase Realtime or WebSockets) for instant notifications and presence.
+Validation & roles: Add robust permission checks on the backend (RLS policies in Supabase) and richer staff role/permission management.
+Mobile app support: Extract logic to a React Native or PWA build for on-the-go shift management.
+Analytics & reporting: Add aggregated staff hours, overtime alerts, and payroll export features.
+Automation / integrations: Integrate SMS/WhatsApp or Slack notifications for shift changes and approvals; add calendar export (iCal) for staff.
+Productivity tools: Use GitHub Copilot / ChatGPT for quicker component scaffolding; use AI-assisted testing tools to generate unit/integration tests for components and API flows.
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Project name
+
+Mahakali — IKS Web Experience
+
+Short tagline (1–2 lines)
+An immersive, educational web experience showcasing the Mahakali Caves through visuals, a virtual museum, and an IKS-themed interactive game.
+
+Purpose
+Built as our college project for the course "IKS — Indian Knowledge System" to research, preserve, and present the cultural, historical, and spiritual significance of the Mahakali Caves.
+
+Key features
+Multi-page informational site with sections for:
+Hero / landing page presenting the site's theme and video tour.
+Detailed "Mahakali Info" gallery with image cards and concise historical descriptions (architecture, stupas, pillars, inscriptions, monastic chambers, etc.).
+"About Us" page describing the student team, college (Father Conceicao Rodrigues College of Engineering), and faculty guidance.
+Embedded multimedia:
+Video player for a guided/introductory Mahakali caves video.
+Rich image gallery used across pages and in the virtual museum.
+Virtual museum (A-Frame):
+3D scene built with A-Frame displaying labeled images as museum exhibits for an immersive walkthrough.
+Small interactive polish:
+Floating particle effect implemented by JavaScript for a dynamic background.
+Glowing/neon visual theme and hover animations across cards and navigation.
+Game link:
+Prominent call-to-action linking to an external IKS Adventure Game (playable experience complementing the site).
+Responsive, Bootstrap-based navbar for mobile-friendly navigation.
+
+Tech stack used
+Frontend: HTML5, CSS3 (multiple page-specific stylesheets), JavaScript (vanilla).
+UI framework: Bootstrap 5 for responsive layout and nav components.
+WebVR/3D: A-Frame for the virtual museum scene.
+Media: Embedded MP4 video and static image assets.
+No backend — static site suitable for GitHub Pages or similar hosting.
+
+Further improvements (optional)
+Make the site fully responsive across all viewports and optimize image/video sizes for faster loading.
+Add lazy-loading for images and the video for performance gains.
+Convert the static gallery into a dynamic JSON-driven gallery to ease content updates.
+Enhance accessibility: add semantic ARIA attributes, keyboard navigation for the A-Frame scene, and captions/transcripts for the video.
+Add a small search or filter for gallery items and an offline-first service worker for a PWA experience.
+Track basic analytics and add a contact/feedback form for visitor contributions and corrections (with a lightweight backend or serverless function).
+Localize content (Marathi/Hindi/English) to better serve regional audiences.
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Project name
+FinTech Tracker
+
+Short tagline
+A modern personal finance dashboard — intuitive insights, fast tracking, and secure auth.
+
+Purpose / description
+FinTech Tracker is a lightweight full-stack prototype built to explore modern frontend tooling and backend fundamentals while delivering a useful personal finance dashboard. The app combines a Vite + React SPA with an Express + MongoDB REST backend (JWT auth) to provide secure user registration, login, and a modular dashboard for tracking budgets, accounts, and insights.
+
+What’s implemented
+Frontend: Vite, React Router, component-driven pages (Dashboard, Overview, Budget, Insights, Account, Settings), private routes and client-side auth token storage.
+Backend: Express server, Mongoose user model, auth routes for register/login, JWT-based authentication middleware.
+Dev tooling: Nodemon for server dev, dotenv for secrets, CORS enabled, axios wrapper on client.
+
+Status
+Partially implemented — core auth and routing are in place, UI pages scaffolded, and backend models/routes defined. Some features and integrations (data persistence for transactions, live charts, complete UI polish, production config) are still in progress. The project will be live soon

@@ -40,3 +40,74 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Nebula / galaxy background animation used by About.jsx */
+.animate-nebula {
+  background-size: 200% 200%;
+  animation: nebulaWave 12s ease-in-out infinite, nebulaHue 20s linear infinite;
+}
+
+@keyframes nebulaWave {
+  0% {
+    background-position: 0% 50%;
+    transform: translate3d(0,0,0) scale(1);
+  }
+  50% {
+    background-position: 100% 50%;
+    transform: translate3d(0, -10px, 0) scale(1.02) rotate(-0.2deg);
+  }
+  100% {
+    background-position: 0% 50%;
+    transform: translate3d(0,0,0) scale(1);
+  }
+}
+
+@keyframes nebulaHue {
+  0% { filter: hue-rotate(0deg) blur(12px); }
+  50% { filter: hue-rotate(60deg) blur(8px); }
+  100% { filter: hue-rotate(0deg) blur(12px); }
+}
+
+/* Slight glow for the nebula layer */
+.animate-nebula::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 20% 10%, rgba(0,255,198,0.06), transparent 10%), radial-gradient(ellipse at 80% 80%, rgba(59,130,246,0.04), transparent 20%);
+  mix-blend-mode: screen;
+}
+
+/* Glowing/pulsing stars and subtle drift */
+.star {
+  will-change: transform, opacity, filter;
+  box-shadow: 0 0 6px rgba(255,255,255,0.08);
+  animation: starPulse var(--star-duration, 1.8s) ease-in-out infinite, starTwinkle 6s linear infinite, starDrift 45s linear infinite;
+}
+
+@keyframes starPulse {
+  0% { opacity: 0.6; transform: scale(1); filter: drop-shadow(0 0 0px rgba(255,255,255,0)); }
+  50% { opacity: 1; transform: scale(1.25); filter: drop-shadow(0 0 6px rgba(255,255,255,0.6)); }
+  100% { opacity: 0.6; transform: scale(1); filter: drop-shadow(0 0 0px rgba(255,255,255,0)); }
+}
+
+@keyframes starTwinkle {
+  0% { opacity: 0.7; }
+  20% { opacity: 1; }
+  40% { opacity: 0.55; }
+  60% { opacity: 0.95; }
+  80% { opacity: 0.65; }
+  100% { opacity: 0.7; }
+}
+
+@keyframes starDrift {
+  0% { transform: translate3d(0,0,0) scale(1); }
+  50% { transform: translate3d(-6px,-3px,0) scale(1.01); }
+  100% { transform: translate3d(0,0,0) scale(1); }
+}
+
+/* small stars get less glow */
+.star[style*="width: 1px"], .star[style*="height: 1px"] {
+  animation-duration: 2.6s, 8s, 60s;
+  opacity: 0.6;
+}

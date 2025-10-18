@@ -1,13 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
+
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
-  const scrollToSection = (id) => {
-    const section = document.getElementById(id);
-    section.scrollIntoView({ behavior: "smooth" });
-    setIsOpen(false);
-  };
+  const starsRef = useRef([]);
+  const navRef = useRef(null);
 
   const navLinks = [
     { name: "Home", id: "home" },
@@ -16,44 +14,107 @@ const Navbar = () => {
     { name: "Contact", id: "contact" },
   ];
 
+  const scrollToSection = (id) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    // Particle stars
+    starsRef.current.forEach((star) => {
+      const size = Math.random() * 3 + 1;
+      gsap.set(star, { width: size, height: size });
+      gsap.to(star, {
+        x: "+=" + (Math.random() * 50 - 25),
+        y: "+=" + (Math.random() * 10 - 5),
+        opacity: Math.random() * 0.7 + 0.3,
+        repeat: -1,
+        yoyo: true,
+        duration: 4 + Math.random() * 3,
+        ease: "sine.inOut",
+      });
+    });
+
+    const handleMouseMove = (e) => {
+      const { clientX, clientY } = e;
+      starsRef.current.forEach((star) => {
+        const rect = star.getBoundingClientRect();
+        const dx = clientX - (rect.left + rect.width / 2);
+        const dy = clientY - (rect.top + rect.height / 2);
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        if (distance < 80) {
+          gsap.to(star, {
+            x: `+=${dx / 3}`,
+            y: `+=${dy / 3}`,
+            duration: 0.2,
+          });
+        }
+      });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
   return (
-    <nav className="fixed w-full z-50 bg-gray-900 bg-opacity-70 backdrop-blur-lg px-8 py-4 flex justify-between items-center shadow-2xl">
+    <nav
+      ref={navRef}
+      className="fixed top-0 left-0 w-full z-50 bg-gray-900 bg-opacity-70 backdrop-blur-lg px-6 md:px-10 py-4 flex justify-between items-center"
+    >
+      {/* Stars */}
+      {[...Array(40)].map((_, i) => (
+        <div
+          key={i}
+          ref={(el) => (starsRef.current[i] = el)}
+          className="absolute rounded-full bg-[#00FFC6] opacity-70"
+          style={{
+            top: `${Math.random() * 100}%`,
+            left: `${Math.random() * 100}%`,
+          }}
+        />
+      ))}
+
       {/* Logo */}
       <h1
-        className="text-3xl font-extrabold bg-gradient-to-r from-green-400 via-cyan-400 to-purple-500 text-transparent bg-clip-text animate-gradientText cursor-pointer"
+        className="text-2xl md:text-3xl font-extrabold cursor-pointer text-transparent bg-clip-text bg-gradient-to-r from-[#00FFC6] via-[#00BFFF] to-[#00FFC6] neon-glow"
         onClick={() => scrollToSection("home")}
       >
         Mokshith
       </h1>
 
       {/* Desktop Links */}
-      <ul className="hidden md:flex space-x-10">
+      <ul className="hidden md:flex space-x-6">
         {navLinks.map((link, idx) => (
           <li
             key={idx}
-            className="relative cursor-pointer text-gray-300 font-semibold hover:text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-cyan-400 to-pink-500 transition-all duration-300"
+            className="cursor-pointer font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#00FFC6] via-[#00BFFF] to-[#00FFC6] neon-glow hover:scale-105 transition-transform duration-300"
             onClick={() => scrollToSection(link.id)}
           >
-            <span className="before:absolute before:-bottom-1 before:left-0 before:h-1 before:w-0 before:bg-gradient-to-r before:from-green-400 before:via-cyan-400 before:to-pink-500 hover:before:w-full before:transition-all before:duration-300"></span>
             {link.name}
           </li>
         ))}
       </ul>
 
-      {/* Mobile Menu Button */}
+      {/* Mobile toggle */}
       <div className="md:hidden">
-        <button onClick={() => setIsOpen(!isOpen)} className="text-3xl text-cyan-400 hover:text-pink-400 transition-colors duration-300">
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="text-3xl text-[#00FFC6] hover:text-[#00BFFF] transition-colors duration-300"
+        >
           {isOpen ? "✖" : "☰"}
         </button>
       </div>
 
-      {/* Mobile Links */}
+      {/* Mobile Menu */}
       {isOpen && (
-        <ul className="absolute top-20 left-0 w-full bg-gray-900 flex flex-col items-center space-y-5 py-6 shadow-2xl">
+        <ul className="absolute top-full left-0 w-full bg-gray-900 flex flex-col items-center space-y-4 py-4 shadow-xl z-50">
           {navLinks.map((link, idx) => (
             <li
               key={idx}
-              className="text-gray-300 font-semibold text-lg cursor-pointer hover:text-green-400 transition-colors duration-300"
+              className="text-[#00FFC6] font-semibold text-lg cursor-pointer hover:text-[#00BFFF] transition-colors duration-300 neon-glow"
               onClick={() => scrollToSection(link.id)}
             >
               {link.name}
@@ -66,3 +127,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
